@@ -1,22 +1,66 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
   const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Commentary',
+    component: () => import('../views/commentary/commentary.vue')
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/mine',
+    name: 'Mine',
+    component: () => import('../views/mine/mine.vue')
+  },
+  {
+    path: '/commentary',
+    name: 'Commentary',
+    component: () => import('../views/commentary/commentary.vue')
+  },
+  {
+    path: '/category',
+    name: 'Category',
+    component: () => import('../views/category/category.vue')
+  },
+  {
+    path: '/mv',
+    name: 'Mv',
+    component: () => import('../views/mv/mv.vue')
+  },
+  {
+    path: '/ranking',
+    name: 'Ranking',
+    component: () => import('../views/ranking/ranking.vue')
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    component: () => import('../views/search/search.vue')
+  },
+  {
+    path: '/playPage',
+    name: 'playPage',
+    component: () => import('../components/common/play/playPage.vue'),
+    children: [
+      {
+        path:'',
+        component: () => import('../components/common/play/playPage/playIntroduct.vue')
+      },
+      {
+        path:'/playPage/playIntroduct',
+        component: () => import('../components/common/play/playPage/playIntroduct.vue')
+      },
+      {
+        path:'/playPage/playCenter',
+        component: () => import('../components/common/play/playPage/playCenter.vue')
+      },
+      {
+        path:'/playPage/playRight',
+        component: () => import('../components/common/play/playPage/playRight.vue')
+      }
+    ]
   }
 ]
 
